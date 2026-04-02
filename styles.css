@@ -165,22 +165,12 @@ nav .right a:hover {
 }
 
 
-.heroSection .introText .links a:last-child {
-    border: 2px solid var(--text-color);
-    border-radius: 20px;
-    font-size: clamp(1.1rem, 1.6vw, 1.8rem);
-    padding: 8px 16px;
-}
-
 
 .heroSection .introText .links a:hover {
     color: var(--hover-color);
 }
 
-.heroSection .introText .links a:last-child:hover {
-    color: var(--hover-color);
-    border: 2px solid var(--hover-color);
-}
+
 
 
 
@@ -232,6 +222,28 @@ nav .right a:hover {
 
 
 
+/* Section 2: ABOUT ME */
+
+
+.aboutSection h2,
+.aboutSection p {
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    color: var(--text-color);
+}
+
+.aboutSection h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: var(--text-color);
+}
+
+.aboutSection p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--text-color);
+}
 
 
 
@@ -241,6 +253,71 @@ nav .right a:hover {
 
 
 
+
+
+
+
+
+/* Academic.html */
+.software, .research {
+    color: var(--text-color)
+}
+
+
+
+
+/* Updated styling for the dark code bubble */
+.rPackage {
+    background-color: #212529; /* Dark charcoal/black background */
+    color: #e0e0e0;            /* Light grey/off-white text */
+    padding: 4px 10px;         /* slightly more padding for the "pill" look */
+    border-radius: 8px;        /* softer rounded corners */
+    font-weight: 500;
+    font-size: 0.9em;
+    letter-spacing: 0.5px;     /* slightly more space between letters */
+    border: 1px solid #343a40; /* subtle border to make it pop against the page */
+    display: inline-block;     /* ensures the padding doesn't overlap other lines */
+}
+
+/* Styling the links so they don't look like default blue text */
+.softwareLink {
+    color: #3C80BF;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.3s ease;
+}
+
+.softwareLink:hover {
+    border-bottom: 1px solid #3C80BF;
+}
+
+
+
+
+
+.researchLink {
+    color: var(--text-color);
+}
+
+.researchLink:hover {
+    color: var(--hover-color);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* RESPONSIVE DESIGN */
 /* medium screens */
 @media (max-width: 1024px) {
     nav {
