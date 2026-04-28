@@ -15,67 +15,133 @@ function navigate(viewName) {
     }
   });
 
+  // Clean up scroll arrow listener from previous home view
+  if (window._scrollArrowCleanup) {
+    window._scrollArrowCleanup();
+    window._scrollArrowCleanup = null;
+  }
+
   // Fade out
   mainContent.classList.add('fade-out');
   
   setTimeout(() => {
     // Inject new content
     mainContent.innerHTML = window.contentViews[viewName];
-    
+
     if (viewName === 'home') {
       initTypingEffect();
+      initScrollArrow();
     }
-    
+
     // Fade in
     mainContent.classList.remove('fade-out');
-    
+
     // Re-initialize scroll animations for new content
     initScrollReveal();
-    
+    initCardTilt();
+
     // Scroll to top smoothly
     window.scrollTo({ top: 0, behavior: 'smooth' });
-    
+
   }, 400); // Wait for fade out transition (0.4s)
 }
 
 function initScrollReveal() {
-  const reveals = document.querySelectorAll('.reveal');
-  
-  // If IntersectionObserver is supported
+  // Add staggered reveal to cards inside grids
+  document.querySelectorAll('.grid-2').forEach(grid => {
+    grid.querySelectorAll('.card').forEach((card, i) => {
+      card.classList.add('reveal-card');
+      card.style.setProperty('--delay', `${i * 0.13}s`);
+    });
+  });
+
+  const reveals = document.querySelectorAll('.reveal, .reveal-card');
+
   if ('IntersectionObserver' in window) {
-    const observer = new IntersectionObserver((entries, observer) => {
+    const observer = new IntersectionObserver((entries, obs) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('active');
-          observer.unobserve(entry.target); // Only animate once
+          obs.unobserve(entry.target);
         }
       });
     }, {
       root: null,
-      threshold: 0.15,
+      threshold: 0.1,
       rootMargin: "0px 0px -50px 0px"
     });
 
-    reveals.forEach(reveal => {
-      observer.observe(reveal);
-    });
+    reveals.forEach(el => observer.observe(el));
   } else {
-    // Fallback if not supported
-    reveals.forEach(reveal => reveal.classList.add('active'));
+    reveals.forEach(el => el.classList.add('active'));
   }
+}
+
+function initCardTilt() {
+  document.querySelectorAll('.card').forEach(card => {
+    card.addEventListener('mousemove', onCardTilt);
+    card.addEventListener('mouseleave', onCardReset);
+
+    const bgLayer = card.querySelector('.card-bg-layer');
+    if (bgLayer && card.dataset.bg) {
+      bgLayer.style.backgroundImage = `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('${card.dataset.bg}')`;
+      card.addEventListener('mouseenter', () => { bgLayer.style.opacity = '1'; });
+      card.addEventListener('mouseleave', () => { bgLayer.style.opacity = '0'; });
+    }
+  });
+}
+
+function onCardTilt(e) {
+  const card = e.currentTarget;
+  // Don't tilt until card has revealed
+  if (card.classList.contains('reveal-card') && !card.classList.contains('active')) return;
+
+  const rect = card.getBoundingClientRect();
+  const x = e.clientX - rect.left;
+  const y = e.clientY - rect.top;
+  const cx = rect.width / 2;
+  const cy = rect.height / 2;
+
+  const rotateX = -((y - cy) / cy) * 7;
+  const rotateY = ((x - cx) / cx) * 7;
+
+  card.style.transition = 'transform 0.1s ease, background 0.3s ease';
+  card.style.transform = `perspective(900px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(10px)`;
+}
+
+function onCardReset(e) {
+  const card = e.currentTarget;
+  card.style.transition = 'transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), background 0.3s ease';
+  card.style.transform = 'perspective(900px) rotateX(0deg) rotateY(0deg) translateZ(0px)';
 }
 
 // Make navigate function globally available for onclick handlers in HTML
 window.navigate = navigate;
+
+function initScrollArrow() {
+  const wrapper = document.querySelector('.scroll-arrow-wrapper');
+  if (!wrapper) return;
+
+  function onScroll() {
+    if (window.scrollY > 80) {
+      wrapper.classList.add('hidden');
+    } else {
+      wrapper.classList.remove('hidden');
+    }
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window._scrollArrowCleanup = () => window.removeEventListener('scroll', onScroll);
+}
 
 // Typing effect logic
 let typingTimeout1, typingTimeout2; // Globals to clear timeouts if user navigates away
 
 function initTypingEffect() {
   const words = [
-      { text: "YouTuber.",        color: "#ff3b30" }, // Apple-like red
-      { text: "Biostatistician.", color: "#007aff" }, // Apple-like blue
-      { text: "Researcher.",      color: "#34c759" }  // Apple-like green
+      { text: "YouTuber."        },
+      { text: "Biostatistician." },
+      { text: "Researcher."      }
   ];
 
   const element = document.getElementById("typing-word");
@@ -95,8 +161,6 @@ function initTypingEffect() {
       if (!document.getElementById("typing-word")) return;
 
       const current = words[wordIndex];
-      element.style.color = current.color;
-      document.documentElement.style.setProperty("--cursor-color", current.color);
 
       if (!isDeleting) {
           if (charIndex <= current.text.length) {
