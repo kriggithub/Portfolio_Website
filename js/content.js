@@ -1,10 +1,10 @@
 const views = {
   home: `
-    <section class="reveal" style="display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 40vh;">
-      <h1>Hi, I'm <span style="color: var(--text-primary);">Kurt.</span></h1>
+    <section class="reveal" style="display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: calc(100vh - 48px - 4rem); position: relative;">
+      <h1>Hi, I'm <span class="gradient-text">Kurt.</span></h1>
       <h3 class="typingText" style="font-size: 1.8rem; font-weight: 400; margin-top: 0.5rem; width: 100%; text-align: center;">
           I'm a&nbsp;<span class="typing-wrapper">
-              <span id="typing-word"></span><span class="caret"></span>
+              <span id="typing-word" class="gradient-text"></span><span class="caret"></span>
           </span>
       </h3>
       <div class="links">
@@ -24,18 +24,20 @@ const views = {
       <p style="margin-top: 3rem; max-width: 700px; text-align: center;">
         Welcome. I'm exploring the intersections of data, technology, and continuous personal improvement.
       </p>
-      <a href="#academic" class="btn" onclick="navigate('academic'); return false;">View Academic Work</a>
+      <div class="scroll-arrow-wrapper"><div class="scroll-arrow"><i class="fa-solid fa-chevron-down"></i></div></div>
     </section>
 
     <section class="reveal text-left" style="width: 100%;">
       <h2>About Me</h2>
       <div class="card">
-        <p>
-          I'm an incoming MS Biostatistics Capstone student at the University of Washington. 
-          My undergraduate training was at Regis University, where I graduated 
-          with a degree in Biology and Mathematics. I have a passion for data science and research,
-          and I strive to make complex topics accessible and entertaining for everyone.
-        </p>
+        <div class="about-card-inner">
+          <img src="images/herophoto.webp" class="about-photo" alt="Kurt Riggin">
+          <p style="max-width: none; margin-bottom: 0;">
+            I'm an MS Biostatistics student at the University of Washington, where I'm completing my Capstone year.
+            My undergraduate training was at Regis University, where I graduated with a degree in Biology and Mathematics.
+            I have a passion for data science and research, and I strive to make complex topics accessible and entertaining for everyone.
+          </p>
+        </div>
       </div>
     </section>
 
@@ -44,33 +46,23 @@ const views = {
       <p style="margin-top: -1rem; margin-bottom: 2rem;">When I'm not coding or doing research, you can find me pursuing my main hobbies:</p>
       
       <div class="grid-2" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
-        <div class="card hobby-card">
-          <div class="hobby-img-placeholder" style="background: rgba(255,255,255,0.05); border-radius: 12px; height: 180px; display: flex; align-items: center; justify-content: center; overflow: hidden; border: 1px dashed rgba(255,255,255,0.1);">
-            <img src="" alt="Pickleball" style="width: 100%; height: 100%; object-fit: cover; opacity: 0;">
-            <i class="fa-solid fa-image" style="position: absolute; font-size: 2rem; color: rgba(255,255,255,0.2);"></i>
-          </div>
-          <h3 style="margin-top: 1.5rem;">Pickleball</h3>
+        <div class="card hobby-card" data-bg="images/pickleball.webp">
+          <div class="card-bg-layer"></div>
+          <h3>Pickleball</h3>
           <p style="font-size: 0.95rem;">Trying to climb the ranks and get my DUPR rating up. Catch me on the courts!</p>
           <a href="https://dashboard.dupr.com/dashboard/player/5056706137" target="_blank" style="color: var(--accent-color); font-size: 0.95rem;">View my DUPR profile &rarr;</a>
         </div>
-        
-        <div class="card hobby-card">
-          <div class="hobby-img-placeholder" style="background: rgba(255,255,255,0.05); border-radius: 12px; height: 180px; display: flex; align-items: center; justify-content: center; overflow: hidden; border: 1px dashed rgba(255,255,255,0.1);">
-            <img src="" alt="Poker" style="width: 100%; height: 100%; object-fit: cover; opacity: 0;">
-            <i class="fa-solid fa-image" style="position: absolute; font-size: 2rem; color: rgba(255,255,255,0.2);"></i>
-          </div>
-          <h3 style="margin-top: 1.5rem;">Poker</h3>
+
+        <div class="card hobby-card" data-bg="images/poker.webp">
+          <div class="card-bg-layer"></div>
+          <h3>Poker</h3>
           <p style="font-size: 0.95rem;">Studying the odds, reading the table, and continuously refining my strategy.</p>
         </div>
 
-        <div class="card hobby-card">
-          <div class="hobby-img-placeholder" style="background: rgba(255,255,255,0.05); border-radius: 12px; height: 180px; display: flex; align-items: center; justify-content: center; overflow: hidden; border: 1px dashed rgba(255,255,255,0.1);">
-            <img src="" alt="Pokémon Cards" style="width: 100%; height: 100%; object-fit: cover; opacity: 0;">
-            <i class="fa-solid fa-image" style="position: absolute; font-size: 2rem; color: rgba(255,255,255,0.2);"></i>
-          </div>
-          <h3 style="margin-top: 1.5rem;">Pokémon Cards</h3>
+        <div class="card hobby-card" data-bg="images/pokemon.webp">
+          <div class="card-bg-layer"></div>
+          <h3>Pokémon Cards</h3>
           <p style="font-size: 0.95rem;">A lifelong collector of vintage and modern sets.</p>
-          <!-- Update the '#' below with your actual collection link -->
           <a href="#" target="_blank" style="color: var(--accent-color); font-size: 0.95rem;">View my Collection &rarr;</a>
         </div>
       </div>
@@ -90,47 +82,66 @@ const views = {
           <h3><i class="fa-solid fa-tree" style="margin-right: 8px;"></i> standrecon</h3>
           <div style="margin-bottom: 1rem;">
             <span class="badge">R Package</span>
+            <span class="badge" style="background: rgba(33, 150, 83, 0.15); border: 1px solid rgba(74, 222, 128, 0.3); color: #4ade80;">CRAN v0.1.0</span>
           </div>
           <p>Reconstruct historical forest stand conditions.</p>
-          <a href="https://github.com/kriggithub/standrecon" target="_blank" style="color: var(--accent-color);">View on GitHub &rarr;</a>
+          <div style="display: flex; gap: 1.5rem; flex-wrap: wrap; margin-top: 0.5rem;">
+            <a href="https://github.com/kriggithub/standrecon" target="_blank" class="card-link">View on GitHub <span class="link-arrow">&rarr;</span></a>
+            <a href="https://cran.r-project.org/web/packages/standrecon/index.html" target="_blank" class="card-link">View on CRAN <span class="link-arrow">&rarr;</span></a>
+          </div>
         </div>
-        
+
         <div class="card">
           <h3><i class="fa-solid fa-circle-nodes" style="margin-right: 8px;"></i> corradar</h3>
           <div style="margin-bottom: 1rem;">
             <span class="badge">R Package</span>
           </div>
           <p>Create correlation-based radar plots.</p>
-          <a href="https://github.com/kriggithub/corradar" target="_blank" style="color: var(--accent-color);">View on GitHub &rarr;</a>
+          <a href="https://github.com/kriggithub/corradar" target="_blank" class="card-link">View on GitHub <span class="link-arrow">&rarr;</span></a>
         </div>
       </div>
     </section>
 
     <section class="reveal text-left" style="width: 100%;">
       <h2>Research Projects</h2>
-      
+
       <div class="card" style="margin-bottom: 1.5rem;">
-        <h3><i class="fa-solid fa-fish-fins" style="margin-right: 8px;"></i> Acropoma Diet Partitioning</h3>
-        <p>Evidence of deep-sea trophic resource partitioning between the glowbellies <em>Acropoma hanedai</em> and <em>A. japonicum</em> near Southwestern Taiwan.</p>
-        <div style="display: flex; gap: 1.5rem; margin-top: 1rem;">
-            <a href="https://link.springer.com/article/10.1007/s10641-026-01814-y" target="_blank" style="color: var(--accent-color);">Read Article &rarr;</a>
-            <a href="https://github.com/kriggithub/Acropoma_Diet_Partitioning" target="_blank" style="color: var(--text-secondary);"><i class="fa-brands fa-github"></i> R Code</a>
+        <div class="about-card-inner">
+          <img src="images/acropoma.webp" class="about-photo" alt="Acropoma fish" style="object-position: 5% center;">
+          <div>
+            <h3><i class="fa-solid fa-fish-fins" style="margin-right: 8px;"></i> Acropoma Diet Partitioning</h3>
+            <p style="max-width: none; margin-bottom: 0.75rem;">Evidence of deep-sea trophic resource partitioning between the glowbellies <em>Acropoma hanedai</em> and <em>A. japonicum</em> near Southwestern Taiwan.</p>
+            <div style="display: flex; gap: 1.5rem; flex-wrap: wrap;">
+              <a href="https://link.springer.com/article/10.1007/s10641-026-01814-y" target="_blank" class="card-link">Read Article <span class="link-arrow">&rarr;</span></a>
+              <a href="https://github.com/kriggithub/Acropoma_Diet_Partitioning" target="_blank" class="card-link muted"><i class="fa-brands fa-github"></i> R Code</a>
+            </div>
+          </div>
         </div>
       </div>
 
       <div class="card" style="margin-bottom: 1.5rem;">
-        <h3><i class="fa-solid fa-industry" style="margin-right: 8px;"></i> Howler Monkeys Edge Effects</h3>
-        <p>A mathematical approach for determining behavioral forest edge effects on howler monkeys (<em>Alouatta palliata</em>) in Costa Rica.</p>
-        <div style="display: flex; gap: 1.5rem; margin-top: 1rem;">
-            <a href="https://github.com/kriggithub/Behavioral_Forest_Edge" target="_blank" style="color: var(--text-secondary);"><i class="fa-brands fa-github"></i> R Code</a>
+        <div class="about-card-inner">
+          <img src="images/monkey.webp" class="about-photo" alt="Howler monkey">
+          <div>
+            <h3><i class="fa-solid fa-industry" style="margin-right: 8px;"></i> Howler Monkeys Edge Effects</h3>
+            <p style="max-width: none; margin-bottom: 0.75rem;">A mathematical approach for determining behavioral forest edge effects on howler monkeys (<em>Alouatta palliata</em>) in Costa Rica.</p>
+            <div style="display: flex; gap: 1.5rem;">
+              <a href="https://github.com/kriggithub/Behavioral_Forest_Edge" target="_blank" class="card-link muted"><i class="fa-brands fa-github"></i> R Code</a>
+            </div>
+          </div>
         </div>
       </div>
 
       <div class="card" style="margin-bottom: 1.5rem;">
-        <h3><i class="fa-solid fa-crow" style="margin-right: 8px;"></i> Emberizoid Hindlimbs</h3>
-        <p>Ecomorphology and phylogenetic signal of hindlimbs in North American sparrows and blackbirds (<em>Passerellidae</em> & <em>Icteridae</em>).</p>
-        <div style="display: flex; gap: 1.5rem; margin-top: 1rem;">
-            <a href="https://github.com/kriggithub/Emberizoid_Hindlimbs" target="_blank" style="color: var(--text-secondary);"><i class="fa-brands fa-github"></i> R Code</a>
+        <div class="about-card-inner">
+          <img src="images/blackbird.webp" class="about-photo" alt="Emberizoid bird">
+          <div>
+            <h3><i class="fa-solid fa-crow" style="margin-right: 8px;"></i> Emberizoid Hindlimbs</h3>
+            <p style="max-width: none; margin-bottom: 0.75rem;">Ecomorphology and phylogenetic signal of hindlimbs in North American sparrows and blackbirds (<em>Passerellidae</em> & <em>Icteridae</em>).</p>
+            <div style="display: flex; gap: 1.5rem;">
+              <a href="https://github.com/kriggithub/Emberizoid_Hindlimbs" target="_blank" class="card-link muted"><i class="fa-brands fa-github"></i> R Code</a>
+            </div>
+          </div>
         </div>
       </div>
     </section>
