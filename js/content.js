@@ -2,7 +2,7 @@ const views = {
   home: `
     <section class="reveal" style="display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 40vh;">
       <h1>Hi, I'm <span style="color: var(--text-primary);">Kurt.</span></h1>
-      <h3 class="typingText" style="font-size: 1.8rem; font-weight: 400; margin-top: 0.5rem;">
+      <h3 class="typingText" style="font-size: 1.8rem; font-weight: 400; margin-top: 0.5rem; width: 100%; text-align: center;">
           I'm a&nbsp;<span class="typing-wrapper">
               <span id="typing-word"></span><span class="caret"></span>
           </span>
