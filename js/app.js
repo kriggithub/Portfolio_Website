@@ -150,10 +150,9 @@ let typingTimeout1, typingTimeout2; // Globals to clear timeouts if user navigat
 
 function initTypingEffect() {
   const words = [
-      { text: "Biostatistician."        },
-      { text: "YouTuber."               },
-      { text: "AI Automation Builder." },
-      { text: "Researcher."             }
+      { text: "Biostatistician." },
+      { text: "YouTuber."        },
+      { text: "AI Automator."    }
   ];
 
   const element = document.getElementById("typing-word");
