@@ -19,9 +19,10 @@ function navigate(viewName) {
   
   // Update active nav state
   navLinks.forEach(link => {
-    link.classList.remove('active');
-    if(link.getAttribute('data-target') === viewName) {
-      link.classList.add('active');
+    const isActive = link.getAttribute('data-target') === viewName;
+    link.classList.toggle('active', isActive);
+    if (link.getAttribute('role') === 'tab') {
+      link.setAttribute('aria-selected', String(isActive));
     }
   });
 
@@ -149,9 +150,10 @@ let typingTimeout1, typingTimeout2; // Globals to clear timeouts if user navigat
 
 function initTypingEffect() {
   const words = [
-      { text: "YouTuber."        },
-      { text: "Biostatistician." },
-      { text: "Researcher."      }
+      { text: "Biostatistician."        },
+      { text: "YouTuber."               },
+      { text: "AI Automation Builder." },
+      { text: "Researcher."             }
   ];
 
   const element = document.getElementById("typing-word");
