@@ -5,7 +5,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Kurt Riggin</title>
   <meta name="description" content="Portfolio of Kurt Riggin: Biostatistician, YouTube Creator, and Technology & AI Enthusiast.">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self';
+                 style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://fonts.googleapis.com;
+                 font-src 'self' https://cdnjs.cloudflare.com https://fonts.gstatic.com;
+                 img-src 'self' data:;
+                 script-src 'self';
+                 connect-src 'self';
+                 frame-src https://www.youtube.com https://www.youtube-nocookie.com;
+                 object-src 'none';
+                 base-uri 'self';
+                 form-action 'self';
+                 frame-ancestors 'none'">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <!-- TODO: Add Subresource Integrity. Get the integrity hash for this exact file
+       from https://cdnjs.com/libraries/font-awesome/6.4.0 and replace the link below with:
+       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+             integrity="sha512-PASTE_HASH_HERE" crossorigin="anonymous" referrerpolicy="no-referrer"> -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        crossorigin="anonymous" referrerpolicy="no-referrer">
   <link rel="stylesheet" href="styles/global.css">
 </head>
 <body>
@@ -13,11 +31,11 @@
   <!-- Navigation -->
   <nav>
     <div class="nav-content">
-      <div class="nav-logo" onclick="navigate('home')">Kurt Riggin</div>
+      <div class="nav-logo" data-target="home">Kurt Riggin</div>
       <div class="nav-links">
-        <a class="nav-link active" data-target="home" onclick="navigate('home')">Home</a>
-        <a class="nav-link" data-target="academic" onclick="navigate('academic')">Academic Work</a>
-        <a class="nav-link" data-target="youtube" onclick="navigate('youtube')">YouTube / Business</a>
+        <a class="nav-link active" data-target="home">Home</a>
+        <a class="nav-link" data-target="academic">Academic Work</a>
+        <a class="nav-link" data-target="youtube">YouTube / Business</a>
       </div>
     </div>
   </nav>
@@ -33,11 +51,11 @@
   <footer>
     <div class="footer-content">
       <div class="social-links">
-        <a href="#" target="_blank">LinkedIn</a>
-        <a href="#" target="_blank">GitHub</a>
-        <a href="#" target="_blank">Email</a>
-        <a href="#" target="_blank">YouTube</a>
-        <a href="#" target="_blank">Resume</a>
+        <a href="https://www.linkedin.com/in/kurtriggin/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href="https://github.com/kriggithub" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="mailto:krigbusiness@gmail.com">Email</a>
+        <a href="https://www.youtube.com/channel/UCiIQgFerfIQ8my1xAd28ZEA" target="_blank" rel="noopener noreferrer">YouTube</a>
+        <a href="Kurt_Riggin_CV.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
       </div>
       <p style="font-size: 0.8rem; margin-top: 1rem; margin-bottom: 0;">&copy; 2026 Kurt Riggin. All rights reserved.</p>
     </div>

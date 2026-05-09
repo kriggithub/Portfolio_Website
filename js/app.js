@@ -1,4 +1,14 @@
 document.addEventListener('DOMContentLoaded', () => {
+  // Wire up navigation (CSP-safe; replaces inline onclick handlers)
+  document.querySelectorAll('[data-target]').forEach(el => {
+    el.addEventListener('click', () => {
+      const target = el.getAttribute('data-target');
+      if (target && Object.prototype.hasOwnProperty.call(window.contentViews, target)) {
+        navigate(target);
+      }
+    });
+  });
+
   // Initial load
   navigate('home');
 });

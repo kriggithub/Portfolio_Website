@@ -1,7 +1,0 @@
-{
-  "permissions": {
-    "allow": [
-      "Bash(start \"c:\\\\Users\\\\Kurt\\\\Documents\\\\Antigravity\\\\Projects\\\\Portfolio_Website\\\\index.html\")"
-    ]
-  }
-}
