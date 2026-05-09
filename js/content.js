@@ -50,7 +50,7 @@ const views = {
           <div class="card-bg-layer"></div>
           <h3>Pickleball</h3>
           <p style="font-size: 0.95rem;">Trying to climb the ranks and get my DUPR rating up. Catch me on the courts!</p>
-          <a href="https://dashboard.dupr.com/dashboard/player/5056706137" target="_blank" style="color: var(--accent-color); font-size: 0.95rem;">View my DUPR profile &rarr;</a>
+          <a href="https://dashboard.dupr.com/dashboard/player/5056706137" target="_blank" rel="noopener noreferrer" style="color: var(--accent-color); font-size: 0.95rem;">View my DUPR profile &rarr;</a>
         </div>
 
         <div class="card hobby-card" data-bg="images/poker.webp">
@@ -63,7 +63,7 @@ const views = {
           <div class="card-bg-layer"></div>
           <h3>Pokémon Cards</h3>
           <p style="font-size: 0.95rem;">A lifelong collector of vintage and modern sets.</p>
-          <a href="#" target="_blank" style="color: var(--accent-color); font-size: 0.95rem;">View my Collection &rarr;</a>
+          <a href="#" rel="noopener noreferrer" style="color: var(--accent-color); font-size: 0.95rem;">View my Collection &rarr;</a>
         </div>
       </div>
     </section>
@@ -86,8 +86,8 @@ const views = {
           </div>
           <p>Reconstruct historical forest stand conditions.</p>
           <div style="display: flex; gap: 1.5rem; flex-wrap: wrap; margin-top: 0.5rem;">
-            <a href="https://github.com/kriggithub/standrecon" target="_blank" class="card-link">View on GitHub <span class="link-arrow">&rarr;</span></a>
-            <a href="https://cran.r-project.org/web/packages/standrecon/index.html" target="_blank" class="card-link">View on CRAN <span class="link-arrow">&rarr;</span></a>
+            <a href="https://github.com/kriggithub/standrecon" target="_blank" rel="noopener noreferrer" class="card-link">View on GitHub <span class="link-arrow">&rarr;</span></a>
+            <a href="https://cran.r-project.org/web/packages/standrecon/index.html" target="_blank" rel="noopener noreferrer" class="card-link">View on CRAN <span class="link-arrow">&rarr;</span></a>
           </div>
         </div>
 
@@ -97,7 +97,7 @@ const views = {
             <span class="badge">R Package</span>
           </div>
           <p>Create correlation-based radar plots.</p>
-          <a href="https://github.com/kriggithub/corradar" target="_blank" class="card-link">View on GitHub <span class="link-arrow">&rarr;</span></a>
+          <a href="https://github.com/kriggithub/corradar" target="_blank" rel="noopener noreferrer" class="card-link">View on GitHub <span class="link-arrow">&rarr;</span></a>
         </div>
       </div>
     </section>
@@ -112,8 +112,8 @@ const views = {
             <h3><i class="fa-solid fa-fish-fins" style="margin-right: 8px;"></i> Acropoma Diet Partitioning</h3>
             <p style="max-width: none; margin-bottom: 0.75rem;">Evidence of deep-sea trophic resource partitioning between the glowbellies <em>Acropoma hanedai</em> and <em>A. japonicum</em> near Southwestern Taiwan.</p>
             <div style="display: flex; gap: 1.5rem; flex-wrap: wrap;">
-              <a href="https://link.springer.com/article/10.1007/s10641-026-01814-y" target="_blank" class="card-link">Read Article <span class="link-arrow">&rarr;</span></a>
-              <a href="https://github.com/kriggithub/Acropoma_Diet_Partitioning" target="_blank" class="card-link muted"><i class="fa-brands fa-github"></i> R Code</a>
+              <a href="https://link.springer.com/article/10.1007/s10641-026-01814-y" target="_blank" rel="noopener noreferrer" class="card-link">Read Article <span class="link-arrow">&rarr;</span></a>
+              <a href="https://github.com/kriggithub/Acropoma_Diet_Partitioning" target="_blank" rel="noopener noreferrer" class="card-link muted"><i class="fa-brands fa-github"></i> R Code</a>
             </div>
           </div>
         </div>
@@ -126,7 +126,7 @@ const views = {
             <h3><i class="fa-solid fa-industry" style="margin-right: 8px;"></i> Howler Monkeys Edge Effects</h3>
             <p style="max-width: none; margin-bottom: 0.75rem;">A mathematical approach for determining behavioral forest edge effects on howler monkeys (<em>Alouatta palliata</em>) in Costa Rica.</p>
             <div style="display: flex; gap: 1.5rem;">
-              <a href="https://github.com/kriggithub/Behavioral_Forest_Edge" target="_blank" class="card-link muted"><i class="fa-brands fa-github"></i> R Code</a>
+              <a href="https://github.com/kriggithub/Behavioral_Forest_Edge" target="_blank" rel="noopener noreferrer" class="card-link muted"><i class="fa-brands fa-github"></i> R Code</a>
             </div>
           </div>
         </div>
@@ -139,7 +139,7 @@ const views = {
             <h3><i class="fa-solid fa-crow" style="margin-right: 8px;"></i> Emberizoid Hindlimbs</h3>
             <p style="max-width: none; margin-bottom: 0.75rem;">Ecomorphology and phylogenetic signal of hindlimbs in North American sparrows and blackbirds (<em>Passerellidae</em> & <em>Icteridae</em>).</p>
             <div style="display: flex; gap: 1.5rem;">
-              <a href="https://github.com/kriggithub/Emberizoid_Hindlimbs" target="_blank" class="card-link muted"><i class="fa-brands fa-github"></i> R Code</a>
+              <a href="https://github.com/kriggithub/Emberizoid_Hindlimbs" target="_blank" rel="noopener noreferrer" class="card-link muted"><i class="fa-brands fa-github"></i> R Code</a>
             </div>
           </div>
         </div>
@@ -151,7 +151,7 @@ const views = {
       <div class="card">
         <h3><i class="fa-solid fa-file-lines" style="margin-right: 8px;"></i> Resume / CV</h3>
         <p>Available for download (Updated Apr 2026).</p>
-        <a href="Kurt_Riggin_CV.pdf" target="_blank" class="btn" style="margin-top: 1rem;"><i class="fa-solid fa-download"></i> Download CV</a>
+        <a href="Kurt_Riggin_CV.pdf" target="_blank" rel="noopener noreferrer" class="btn" style="margin-top: 1rem;"><i class="fa-solid fa-download"></i> Download CV</a>
       </div>
     </section>
   `,
