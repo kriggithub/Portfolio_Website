@@ -3,21 +3,60 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kurt Riggin</title>
-  <meta name="description" content="Portfolio of Kurt Riggin: Biostatistician, YouTube Creator, and Technology & AI Enthusiast.">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <title>Kurt Riggin — Biostatistician, YouTuber, AI Automation</title>
+  <meta name="description" content="Portfolio of Kurt Riggin: Biostatistician, YouTube Creator, and AI Automation builder.">
+  <meta name="author" content="Kurt Riggin">
+  <link rel="canonical" href="https://kriggithub.github.io/Portfolio_Website/">
+  <meta name="theme-color" content="#000000">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Kurt Riggin">
+  <meta property="og:description" content="Biostatistician, YouTube Creator, and AI Automation builder.">
+  <meta property="og:url" content="https://kriggithub.github.io/Portfolio_Website/">
+  <meta property="og:image" content="https://kriggithub.github.io/Portfolio_Website/images/herophoto.webp">
+  <meta property="og:image:alt" content="Kurt Riggin">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Kurt Riggin">
+  <meta name="twitter:description" content="Biostatistician, YouTube Creator, and AI Automation builder.">
+  <meta name="twitter:image" content="https://kriggithub.github.io/Portfolio_Website/images/herophoto.webp">
+
+  <!-- Favicon (inline SVG keeps it CSP-friendly and lightweight) -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23000'/%3E%3Ctext x='50%25' y='54%25' text-anchor='middle' dominant-baseline='middle' font-family='Inter,system-ui,sans-serif' font-weight='700' font-size='34' fill='%23f5f5f7'%3EK%3C/text%3E%3C/svg%3E">
+
+  <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self';
+                 style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://fonts.googleapis.com;
+                 font-src 'self' https://cdnjs.cloudflare.com https://fonts.gstatic.com;
+                 img-src 'self' data:;
+                 script-src 'self';
+                 connect-src 'self';
+                 frame-src https://www.youtube.com https://www.youtube-nocookie.com;
+                 object-src 'none';
+                 base-uri 'self';
+                 form-action 'self';
+                 frame-ancestors 'none'">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <!-- TODO: Add Subresource Integrity. Get the integrity hash for this exact file
+       from https://cdnjs.com/libraries/font-awesome/6.4.0 and replace the link below with:
+       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+             integrity="sha512-PASTE_HASH_HERE" crossorigin="anonymous" referrerpolicy="no-referrer"> -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        crossorigin="anonymous" referrerpolicy="no-referrer">
   <link rel="stylesheet" href="styles/global.css">
 </head>
 <body>
 
   <!-- Navigation -->
-  <nav>
+  <nav aria-label="Primary">
     <div class="nav-content">
-      <div class="nav-logo" onclick="navigate('home')">Kurt Riggin</div>
-      <div class="nav-links">
-        <a class="nav-link active" data-target="home" onclick="navigate('home')">Home</a>
-        <a class="nav-link" data-target="academic" onclick="navigate('academic')">Academic Work</a>
-        <a class="nav-link" data-target="youtube" onclick="navigate('youtube')">YouTube / Business</a>
+      <button type="button" class="nav-logo" data-target="home" aria-label="Go to home">Kurt Riggin</button>
+      <div class="nav-links" role="tablist">
+        <button type="button" class="nav-link active" data-target="home" role="tab" aria-selected="true">Home</button>
+        <button type="button" class="nav-link" data-target="academic" role="tab" aria-selected="false">Academic Work</button>
+        <button type="button" class="nav-link" data-target="youtube" role="tab" aria-selected="false">YouTube / Business</button>
       </div>
     </div>
   </nav>
@@ -33,11 +72,11 @@
   <footer>
     <div class="footer-content">
       <div class="social-links">
-        <a href="#" target="_blank">LinkedIn</a>
-        <a href="#" target="_blank">GitHub</a>
-        <a href="#" target="_blank">Email</a>
-        <a href="#" target="_blank">YouTube</a>
-        <a href="#" target="_blank">Resume</a>
+        <a href="https://www.linkedin.com/in/kurtriggin/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href="https://github.com/kriggithub" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="mailto:krigbusiness@gmail.com">Email</a>
+        <a href="https://www.youtube.com/channel/UCiIQgFerfIQ8my1xAd28ZEA" target="_blank" rel="noopener noreferrer">YouTube</a>
+        <a href="Kurt_Riggin_CV.pdf" download rel="noopener noreferrer">Resume</a>
       </div>
       <p style="font-size: 0.8rem; margin-top: 1rem; margin-bottom: 0;">&copy; 2026 Kurt Riggin. All rights reserved.</p>
     </div>

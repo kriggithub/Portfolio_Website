@@ -31,7 +31,7 @@ const views = {
       <h2>About Me</h2>
       <div class="card">
         <div class="about-card-inner">
-          <img src="images/herophoto.webp" class="about-photo" alt="Kurt Riggin">
+          <img src="images/herophoto.webp" class="about-photo" alt="Kurt Riggin" width="150" height="150" loading="lazy" decoding="async">
           <p style="max-width: none; margin-bottom: 0;">
             I'm an MS Biostatistics student at the University of Washington, where I'm completing my Capstone year.
             My undergraduate training was at Regis University, where I graduated with a degree in Biology and Mathematics.
@@ -50,7 +50,7 @@ const views = {
           <div class="card-bg-layer"></div>
           <h3>Pickleball</h3>
           <p style="font-size: 0.95rem;">Trying to climb the ranks and get my DUPR rating up. Catch me on the courts!</p>
-          <a href="https://dashboard.dupr.com/dashboard/player/5056706137" target="_blank" style="color: var(--accent-color); font-size: 0.95rem;">View my DUPR profile &rarr;</a>
+          <a href="https://dashboard.dupr.com/dashboard/player/5056706137" target="_blank" rel="noopener noreferrer" style="color: var(--accent-color); font-size: 0.95rem;">View my DUPR profile &rarr;</a>
         </div>
 
         <div class="card hobby-card" data-bg="images/poker.webp">
@@ -63,7 +63,7 @@ const views = {
           <div class="card-bg-layer"></div>
           <h3>Pokémon Cards</h3>
           <p style="font-size: 0.95rem;">A lifelong collector of vintage and modern sets.</p>
-          <a href="#" target="_blank" style="color: var(--accent-color); font-size: 0.95rem;">View my Collection &rarr;</a>
+          <a href="#" rel="noopener noreferrer" style="color: var(--accent-color); font-size: 0.95rem;">View my Collection &rarr;</a>
         </div>
       </div>
     </section>
@@ -86,8 +86,8 @@ const views = {
           </div>
           <p>Reconstruct historical forest stand conditions.</p>
           <div style="display: flex; gap: 1.5rem; flex-wrap: wrap; margin-top: 0.5rem;">
-            <a href="https://github.com/kriggithub/standrecon" target="_blank" class="card-link">View on GitHub <span class="link-arrow">&rarr;</span></a>
-            <a href="https://cran.r-project.org/web/packages/standrecon/index.html" target="_blank" class="card-link">View on CRAN <span class="link-arrow">&rarr;</span></a>
+            <a href="https://github.com/kriggithub/standrecon" target="_blank" rel="noopener noreferrer" class="card-link">View on GitHub <span class="link-arrow">&rarr;</span></a>
+            <a href="https://cran.r-project.org/web/packages/standrecon/index.html" target="_blank" rel="noopener noreferrer" class="card-link">View on CRAN <span class="link-arrow">&rarr;</span></a>
           </div>
         </div>
 
@@ -97,7 +97,7 @@ const views = {
             <span class="badge">R Package</span>
           </div>
           <p>Create correlation-based radar plots.</p>
-          <a href="https://github.com/kriggithub/corradar" target="_blank" class="card-link">View on GitHub <span class="link-arrow">&rarr;</span></a>
+          <a href="https://github.com/kriggithub/corradar" target="_blank" rel="noopener noreferrer" class="card-link">View on GitHub <span class="link-arrow">&rarr;</span></a>
         </div>
       </div>
     </section>
@@ -107,13 +107,13 @@ const views = {
 
       <div class="card" style="margin-bottom: 1.5rem;">
         <div class="about-card-inner">
-          <img src="images/acropoma.webp" class="about-photo" alt="Acropoma fish" style="object-position: 5% center;">
+          <img src="images/acropoma.webp" class="about-photo" alt="Acropoma fish" width="150" height="150" loading="lazy" decoding="async" style="object-position: 5% center;">
           <div>
             <h3><i class="fa-solid fa-fish-fins" style="margin-right: 8px;"></i> Acropoma Diet Partitioning</h3>
             <p style="max-width: none; margin-bottom: 0.75rem;">Evidence of deep-sea trophic resource partitioning between the glowbellies <em>Acropoma hanedai</em> and <em>A. japonicum</em> near Southwestern Taiwan.</p>
             <div style="display: flex; gap: 1.5rem; flex-wrap: wrap;">
-              <a href="https://link.springer.com/article/10.1007/s10641-026-01814-y" target="_blank" class="card-link">Read Article <span class="link-arrow">&rarr;</span></a>
-              <a href="https://github.com/kriggithub/Acropoma_Diet_Partitioning" target="_blank" class="card-link muted"><i class="fa-brands fa-github"></i> R Code</a>
+              <a href="https://link.springer.com/article/10.1007/s10641-026-01814-y" target="_blank" rel="noopener noreferrer" class="card-link">Read Article <span class="link-arrow">&rarr;</span></a>
+              <a href="https://github.com/kriggithub/Acropoma_Diet_Partitioning" target="_blank" rel="noopener noreferrer" class="card-link muted"><i class="fa-brands fa-github"></i> R Code</a>
             </div>
           </div>
         </div>
@@ -121,12 +121,12 @@ const views = {
 
       <div class="card" style="margin-bottom: 1.5rem;">
         <div class="about-card-inner">
-          <img src="images/monkey.webp" class="about-photo" alt="Howler monkey">
+          <img src="images/monkey.webp" class="about-photo" alt="Howler monkey" width="150" height="150" loading="lazy" decoding="async">
           <div>
             <h3><i class="fa-solid fa-industry" style="margin-right: 8px;"></i> Howler Monkeys Edge Effects</h3>
             <p style="max-width: none; margin-bottom: 0.75rem;">A mathematical approach for determining behavioral forest edge effects on howler monkeys (<em>Alouatta palliata</em>) in Costa Rica.</p>
             <div style="display: flex; gap: 1.5rem;">
-              <a href="https://github.com/kriggithub/Behavioral_Forest_Edge" target="_blank" class="card-link muted"><i class="fa-brands fa-github"></i> R Code</a>
+              <a href="https://github.com/kriggithub/Behavioral_Forest_Edge" target="_blank" rel="noopener noreferrer" class="card-link muted"><i class="fa-brands fa-github"></i> R Code</a>
             </div>
           </div>
         </div>
@@ -134,12 +134,12 @@ const views = {
 
       <div class="card" style="margin-bottom: 1.5rem;">
         <div class="about-card-inner">
-          <img src="images/blackbird.webp" class="about-photo" alt="Emberizoid bird">
+          <img src="images/blackbird.webp" class="about-photo" alt="Emberizoid bird" width="150" height="150" loading="lazy" decoding="async">
           <div>
             <h3><i class="fa-solid fa-crow" style="margin-right: 8px;"></i> Emberizoid Hindlimbs</h3>
             <p style="max-width: none; margin-bottom: 0.75rem;">Ecomorphology and phylogenetic signal of hindlimbs in North American sparrows and blackbirds (<em>Passerellidae</em> & <em>Icteridae</em>).</p>
             <div style="display: flex; gap: 1.5rem;">
-              <a href="https://github.com/kriggithub/Emberizoid_Hindlimbs" target="_blank" class="card-link muted"><i class="fa-brands fa-github"></i> R Code</a>
+              <a href="https://github.com/kriggithub/Emberizoid_Hindlimbs" target="_blank" rel="noopener noreferrer" class="card-link muted"><i class="fa-brands fa-github"></i> R Code</a>
             </div>
           </div>
         </div>
@@ -151,7 +151,7 @@ const views = {
       <div class="card">
         <h3><i class="fa-solid fa-file-lines" style="margin-right: 8px;"></i> Resume / CV</h3>
         <p>Available for download (Updated Apr 2026).</p>
-        <a href="Kurt_Riggin_CV.pdf" target="_blank" class="btn" style="margin-top: 1rem;"><i class="fa-solid fa-download"></i> Download CV</a>
+        <a href="Kurt_Riggin_CV.pdf" download class="btn" style="margin-top: 1rem;"><i class="fa-solid fa-download"></i> Download CV</a>
       </div>
     </section>
   `,
@@ -184,6 +184,23 @@ const views = {
           <h3 style="margin-top: 1.5rem;">Video Coming Soon</h3>
           <p style="font-size: 0.95rem;">Space reserved for an embedded YouTube video.</p>
         </div>
+      </div>
+    </section>
+
+    <section class="reveal text-left" style="width: 100%; margin-top: 4rem;">
+      <h2>AI Automation</h2>
+      <p style="margin-bottom: 2rem;">I'm currently going deep on AI automation &mdash; building practical, production-ready agent workflows that turn repetitive processes into reliable systems. Open to selective consulting and build engagements.</p>
+
+      <div class="card">
+        <h3><i class="fa-solid fa-robot" style="margin-right: 8px;"></i> What I'm building</h3>
+        <ul style="color: var(--text-secondary); font-size: 1.05rem; padding-left: 1.2rem; margin-bottom: 1.5rem; line-height: 1.8;">
+          <li>LLM agent orchestration and multi-step workflows</li>
+          <li>Internal tool automation (n8n, Zapier, custom scripts)</li>
+          <li>AI-augmented data pipelines for research and analytics</li>
+          <li>Statistical reporting and document generation at scale</li>
+        </ul>
+        <p style="margin-bottom: 0;">Have a process you'd like to automate? Let's talk.</p>
+        <a href="mailto:krigbusiness@gmail.com?subject=AI%20Automation%20Inquiry" class="btn" style="margin-top: 1.5rem;"><i class="fa-solid fa-bolt"></i> Discuss a Project</a>
       </div>
     </section>
 

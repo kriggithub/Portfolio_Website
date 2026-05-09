@@ -1,4 +1,14 @@
 document.addEventListener('DOMContentLoaded', () => {
+  // Wire up navigation (CSP-safe; replaces inline onclick handlers)
+  document.querySelectorAll('[data-target]').forEach(el => {
+    el.addEventListener('click', () => {
+      const target = el.getAttribute('data-target');
+      if (target && Object.prototype.hasOwnProperty.call(window.contentViews, target)) {
+        navigate(target);
+      }
+    });
+  });
+
   // Initial load
   navigate('home');
 });
@@ -9,9 +19,10 @@ function navigate(viewName) {
   
   // Update active nav state
   navLinks.forEach(link => {
-    link.classList.remove('active');
-    if(link.getAttribute('data-target') === viewName) {
-      link.classList.add('active');
+    const isActive = link.getAttribute('data-target') === viewName;
+    link.classList.toggle('active', isActive);
+    if (link.getAttribute('role') === 'tab') {
+      link.setAttribute('aria-selected', String(isActive));
     }
   });
 
@@ -139,9 +150,9 @@ let typingTimeout1, typingTimeout2; // Globals to clear timeouts if user navigat
 
 function initTypingEffect() {
   const words = [
-      { text: "YouTuber."        },
       { text: "Biostatistician." },
-      { text: "Researcher."      }
+      { text: "YouTuber."        },
+      { text: "AI Automator."    }
   ];
 
   const element = document.getElementById("typing-word");
