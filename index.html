@@ -49,11 +49,21 @@
 </head>
 <body>
 
+  <!-- Ambient background layers -->
+  <div class="bg-aurora" aria-hidden="true">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+  </div>
+  <canvas id="bg-canvas" aria-hidden="true"></canvas>
+  <div id="scroll-progress" aria-hidden="true"></div>
+
   <!-- Navigation -->
   <nav aria-label="Primary">
     <div class="nav-content">
       <button type="button" class="nav-logo" data-target="home" aria-label="Go to home">Kurt Riggin</button>
       <div class="nav-links" role="tablist">
+        <span class="nav-indicator" aria-hidden="true"></span>
         <button type="button" class="nav-link active" data-target="home" role="tab" aria-selected="true">Home</button>
         <button type="button" class="nav-link" data-target="academic" role="tab" aria-selected="false">Academic Work</button>
         <button type="button" class="nav-link" data-target="youtube" role="tab" aria-selected="false">YouTube / Business</button>
@@ -84,6 +94,7 @@
 
   <!-- Scripts -->
   <script src="js/content.js"></script>
+  <script src="js/effects.js"></script>
   <script src="js/app.js"></script>
 </body>
 </html>
