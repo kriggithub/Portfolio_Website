@@ -1,13 +1,14 @@
 const views = {
   home: `
     <section class="reveal" style="display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: calc(100vh - 48px - 4rem); position: relative;">
-      <h1><span class="hero-word" style="--i: 0;">Hi,</span> <span class="hero-word" style="--i: 1;">I'm</span> <span class="hero-word gradient-text" style="--i: 2;">Kurt.</span></h1>
-      <h3 class="typingText" style="font-size: 1.8rem; font-weight: 400; margin-top: 0.5rem; width: 100%; text-align: center;">
+      <div class="hero-halo" aria-hidden="true"></div>
+      <h1 class="hero-parallax"><span class="hero-word" style="--i: 0;">Hi,</span> <span class="hero-word" style="--i: 1;">I'm</span> <span class="hero-word gradient-text" style="--i: 2;">Kurt.</span></h1>
+      <h3 class="typingText hero-parallax" style="--depth: 0.55; font-size: 1.8rem; font-weight: 400; margin-top: 0.5rem; width: 100%; text-align: center;">
           I'm a&nbsp;<span class="typing-wrapper">
               <span id="typing-word" class="gradient-text"></span><span class="caret"></span>
           </span>
       </h3>
-      <div class="links">
+      <div class="links hero-parallax" style="--depth: 0.35;">
           <a href="https://github.com/kriggithub" target="_blank" rel="noopener noreferrer" class="hero-pop" style="--i: 0;">
               <i class="fa-brands fa-github"></i>
           </a>

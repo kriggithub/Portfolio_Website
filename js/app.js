@@ -44,6 +44,8 @@ function navigate(viewName) {
     if (viewName === 'home') {
       initTypingEffect();
       initScrollArrow();
+    } else if (window.scrambleHeading) {
+      window.scrambleHeading(mainContent.querySelector('h1'));
     }
 
     // Fade in
@@ -144,6 +146,10 @@ window.navigate = navigate;
 function initScrollArrow() {
   const wrapper = document.querySelector('.scroll-arrow-wrapper');
   if (!wrapper) return;
+
+  wrapper.addEventListener('click', () => {
+    window.scrollBy({ top: window.innerHeight * 0.85, behavior: 'smooth' });
+  });
 
   function onScroll() {
     if (window.scrollY > 80) {

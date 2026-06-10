@@ -51,6 +51,81 @@
   }
   window.initMagnetic = initMagnetic;
 
+  /* Trailing cursor glow ring (desktop pointers only) */
+  function initCursorGlow() {
+    if (reduceMotion.matches || !canHover.matches) return;
+    const ring = document.createElement('div');
+    ring.id = 'cursor-glow';
+    ring.setAttribute('aria-hidden', 'true');
+    document.body.appendChild(ring);
+
+    let tx = -100, ty = -100, x = -100, y = -100;
+    document.addEventListener('mousemove', (e) => {
+      tx = e.clientX;
+      ty = e.clientY;
+      ring.style.opacity = '1';
+    }, { passive: true });
+    document.documentElement.addEventListener('mouseleave', () => {
+      ring.style.opacity = '0';
+    });
+    document.addEventListener('mouseover', (e) => {
+      const interactive = e.target.closest && e.target.closest('a, button');
+      ring.classList.toggle('is-active', !!interactive);
+    });
+
+    (function loop() {
+      x += (tx - x) * 0.16;
+      y += (ty - y) * 0.16;
+      ring.style.transform = `translate3d(${x.toFixed(1)}px, ${y.toFixed(1)}px, 0) translate(-50%, -50%)`;
+      requestAnimationFrame(loop);
+    })();
+  }
+
+  /* Mouse parallax for hero elements (reads --depth per element) */
+  function initHeroParallax() {
+    if (reduceMotion.matches || !canHover.matches) return;
+    let queued = false;
+    window.addEventListener('mousemove', (e) => {
+      if (queued) return;
+      queued = true;
+      requestAnimationFrame(() => {
+        const px = (e.clientX / window.innerWidth - 0.5) * -22;
+        const py = (e.clientY / window.innerHeight - 0.5) * -14;
+        document.documentElement.style.setProperty('--phx', `${px.toFixed(1)}px`);
+        document.documentElement.style.setProperty('--phy', `${py.toFixed(1)}px`);
+        queued = false;
+      });
+    }, { passive: true });
+  }
+
+  /* Decrypt-style text scramble for page headings */
+  function scrambleHeading(el) {
+    if (!el) return;
+    const original = el.textContent;
+    if (reduceMotion.matches || !original) return;
+    const CHARS = '!<>-_\\/[]{}=+*^?#';
+    const duration = 900;
+    const start = performance.now();
+
+    function step(now) {
+      if (!el.isConnected) return;
+      const progress = Math.min(1, (now - start) / duration);
+      const resolved = Math.floor(original.length * progress);
+      let out = original.slice(0, resolved);
+      for (let i = resolved; i < original.length; i++) {
+        out += original[i] === ' ' ? ' ' : CHARS[(Math.random() * CHARS.length) | 0];
+      }
+      el.textContent = out;
+      if (progress < 1) {
+        requestAnimationFrame(step);
+      } else {
+        el.textContent = original;
+      }
+    }
+    requestAnimationFrame(step);
+  }
+  window.scrambleHeading = scrambleHeading;
+
   /* Ambient starfield canvas with parallax and shooting stars */
   function initCanvas() {
     const canvas = document.getElementById('bg-canvas');
@@ -62,6 +137,7 @@
     let h = 0;
     let particles = [];
     let stars = [];
+    let sparks = [];
     let nextStarAt = performance.now() + 3000;
     let rafId = null;
     const mouse = { x: 0.5, y: 0.5, ex: 0.5, ey: 0.5 };
@@ -100,6 +176,25 @@
         life: 1
       });
       nextStarAt = now + 5000 + Math.random() * 7000;
+    }
+
+    function spawnSparks(cx, cy) {
+      const count = 12 + Math.floor(Math.random() * 6);
+      for (let i = 0; i < count; i++) {
+        const angle = Math.random() * Math.PI * 2;
+        const speed = 1.5 + Math.random() * 3;
+        sparks.push({
+          x: cx,
+          y: cy,
+          vx: Math.cos(angle) * speed,
+          vy: Math.sin(angle) * speed - 1,
+          r: 0.8 + Math.random() * 1.4,
+          life: 1,
+          decay: 0.02 + Math.random() * 0.02,
+          color: COLORS[Math.floor(Math.random() * COLORS.length)]
+        });
+      }
+      if (sparks.length > 220) sparks = sparks.slice(-220);
     }
 
     function frame(now) {
@@ -149,10 +244,30 @@
         ctx.stroke();
       }
 
+      for (let i = sparks.length - 1; i >= 0; i--) {
+        const sp = sparks[i];
+        sp.x += sp.vx;
+        sp.y += sp.vy;
+        sp.vx *= 0.985;
+        sp.vy = sp.vy * 0.985 + 0.05;
+        sp.life -= sp.decay;
+        if (sp.life <= 0) {
+          sparks.splice(i, 1);
+          continue;
+        }
+        ctx.beginPath();
+        ctx.arc(sp.x, sp.y, sp.r * sp.life, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(${sp.color}, ${sp.life.toFixed(3)})`;
+        ctx.fill();
+      }
+
       rafId = requestAnimationFrame(frame);
     }
 
     window.addEventListener('resize', resize);
+    document.addEventListener('pointerdown', (e) => {
+      spawnSparks(e.clientX, e.clientY);
+    });
     if (canHover.matches) {
       window.addEventListener('mousemove', (e) => {
         mouse.x = e.clientX / w;
@@ -176,6 +291,8 @@
     updateProgress();
     updateNavIndicator();
     initMagnetic();
+    initCursorGlow();
+    initHeroParallax();
     initCanvas();
   });
 })();
