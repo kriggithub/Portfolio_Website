@@ -1,23 +1,23 @@
 const views = {
   home: `
     <section class="reveal" style="display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: calc(100vh - 48px - 4rem); position: relative;">
-      <h1>Hi, I'm <span class="gradient-text">Kurt.</span></h1>
+      <h1><span class="hero-word" style="--i: 0;">Hi,</span> <span class="hero-word" style="--i: 1;">I'm</span> <span class="hero-word gradient-text" style="--i: 2;">Kurt.</span></h1>
       <h3 class="typingText" style="font-size: 1.8rem; font-weight: 400; margin-top: 0.5rem; width: 100%; text-align: center;">
           I'm a&nbsp;<span class="typing-wrapper">
               <span id="typing-word" class="gradient-text"></span><span class="caret"></span>
           </span>
       </h3>
       <div class="links">
-          <a href="https://github.com/kriggithub" target="_blank" rel="noopener noreferrer">
+          <a href="https://github.com/kriggithub" target="_blank" rel="noopener noreferrer" class="hero-pop" style="--i: 0;">
               <i class="fa-brands fa-github"></i>
           </a>
-          <a href="https://www.linkedin.com/in/kurtriggin/" target="_blank" rel="noopener noreferrer">
+          <a href="https://www.linkedin.com/in/kurtriggin/" target="_blank" rel="noopener noreferrer" class="hero-pop" style="--i: 1;">
               <i class="fa-brands fa-linkedin"></i>
           </a>
-          <a href="https://www.youtube.com/channel/UCiIQgFerfIQ8my1xAd28ZEA" target="_blank" rel="noopener noreferrer">
+          <a href="https://www.youtube.com/channel/UCiIQgFerfIQ8my1xAd28ZEA" target="_blank" rel="noopener noreferrer" class="hero-pop" style="--i: 2;">
               <i class="fa-brands fa-youtube"></i>
           </a>
-          <a href="https://orcid.org/0009-0004-4700-1251" target="_blank" rel="noopener noreferrer">
+          <a href="https://orcid.org/0009-0004-4700-1251" target="_blank" rel="noopener noreferrer" class="hero-pop" style="--i: 3;">
               <i class="fa-brands fa-orcid"></i>
           </a>
       </div>

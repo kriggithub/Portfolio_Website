@@ -26,6 +26,8 @@ function navigate(viewName) {
     }
   });
 
+  if (window.updateNavIndicator) window.updateNavIndicator();
+
   // Clean up scroll arrow listener from previous home view
   if (window._scrollArrowCleanup) {
     window._scrollArrowCleanup();
@@ -50,6 +52,7 @@ function navigate(viewName) {
     // Re-initialize scroll animations for new content
     initScrollReveal();
     initCardTilt();
+    if (window.initMagnetic) window.initMagnetic();
 
     // Scroll to top smoothly
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -89,9 +92,12 @@ function initScrollReveal() {
 }
 
 function initCardTilt() {
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   document.querySelectorAll('.card').forEach(card => {
-    card.addEventListener('mousemove', onCardTilt);
-    card.addEventListener('mouseleave', onCardReset);
+    if (!reduceMotion) {
+      card.addEventListener('mousemove', onCardTilt);
+      card.addEventListener('mouseleave', onCardReset);
+    }
 
     const bgLayer = card.querySelector('.card-bg-layer');
     if (bgLayer && card.dataset.bg) {
@@ -104,12 +110,18 @@ function initCardTilt() {
 
 function onCardTilt(e) {
   const card = e.currentTarget;
-  // Don't tilt until card has revealed
-  if (card.classList.contains('reveal-card') && !card.classList.contains('active')) return;
 
   const rect = card.getBoundingClientRect();
   const x = e.clientX - rect.left;
   const y = e.clientY - rect.top;
+
+  // Drive the spotlight / glow-border gradients in CSS
+  card.style.setProperty('--mx', `${x}px`);
+  card.style.setProperty('--my', `${y}px`);
+
+  // Don't tilt until card has revealed
+  if (card.classList.contains('reveal-card') && !card.classList.contains('active')) return;
+
   const cx = rect.width / 2;
   const cy = rect.height / 2;
 
