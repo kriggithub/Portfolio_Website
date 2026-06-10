@@ -88,11 +88,19 @@ nav {
   font-size: 1.2rem;
   letter-spacing: -0.02em;
   cursor: pointer;
-  background: none;
   border: 0;
   padding: 0;
   color: inherit;
   font-family: inherit;
+  background: linear-gradient(90deg, #2997ff, #bf5af2, #ff375f);
+  -webkit-background-clip: text;
+  background-clip: text;
+  transition: color 0.3s ease;
+}
+
+.nav-logo:hover {
+  color: transparent;
+  -webkit-text-fill-color: transparent;
 }
 
 .nav-links {
@@ -284,6 +292,8 @@ section {
 
 .badge {
   display: inline-block;
+  position: relative;
+  overflow: hidden;
   padding: 0.2rem 0.8rem;
   background: rgba(255, 255, 255, 0.1);
   border-radius: 20px;
@@ -291,6 +301,21 @@ section {
   margin-right: 0.5rem;
   margin-bottom: 0.5rem;
   color: var(--text-primary);
+}
+
+/* Periodic shine sweep across badges */
+.badge::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(105deg, transparent 30%, rgba(255, 255, 255, 0.3) 50%, transparent 70%);
+  transform: translateX(-120%);
+  animation: badgeShine 5.5s ease-in-out infinite;
+}
+
+@keyframes badgeShine {
+  0% { transform: translateX(-120%); }
+  22%, 100% { transform: translateX(120%); }
 }
 
 .btn {
@@ -413,11 +438,18 @@ footer {
   left: 50%;
   transform: translateX(-50%);
   transition: opacity 0.6s ease;
-  pointer-events: none;
+  pointer-events: auto;
+  cursor: pointer;
 }
 
 .scroll-arrow-wrapper.hidden {
   opacity: 0;
+  pointer-events: none;
+}
+
+.scroll-arrow-wrapper:hover .scroll-arrow {
+  color: var(--text-primary);
+  opacity: 1;
 }
 
 .scroll-arrow {
@@ -675,4 +707,93 @@ body::after {
 .card:hover .about-photo {
   transform: scale(1.05) rotate(-2deg);
   box-shadow: 0 0 35px rgba(41, 151, 255, 0.35);
+}
+
+/* ===== Trailing cursor glow ring ===== */
+#cursor-glow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255, 255, 255, 0.35);
+  background: radial-gradient(circle, rgba(41, 151, 255, 0.12), transparent 70%);
+  pointer-events: none;
+  z-index: 999;
+  opacity: 0;
+  transition: width 0.3s ease, height 0.3s ease, border-color 0.3s ease,
+              opacity 0.3s ease, background 0.3s ease;
+  will-change: transform;
+}
+
+#cursor-glow.is-active {
+  width: 56px;
+  height: 56px;
+  border-color: rgba(41, 151, 255, 0.8);
+  background: radial-gradient(circle, rgba(41, 151, 255, 0.18), transparent 70%);
+}
+
+/* ===== Hero mouse parallax (vars set by effects.js) ===== */
+.hero-parallax {
+  transform: translate3d(calc(var(--phx, 0px) * var(--depth, 1)),
+                         calc(var(--phy, 0px) * var(--depth, 1)), 0);
+}
+
+/* ===== Breathing halo behind the hero name ===== */
+.hero-halo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: min(540px, 90vw);
+  height: min(540px, 90vw);
+  transform: translate(-50%, -55%);
+  background: radial-gradient(circle, rgba(41, 151, 255, 0.16),
+              rgba(191, 90, 242, 0.08) 45%, transparent 70%);
+  filter: blur(30px);
+  animation: haloPulse 7s ease-in-out infinite;
+  pointer-events: none;
+  z-index: -1;
+}
+
+@keyframes haloPulse {
+  0%, 100% {
+    opacity: 0.7;
+    transform: translate(-50%, -55%) scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: translate(-50%, -55%) scale(1.12);
+  }
+}
+
+/* ===== Card heading icons spring on hover ===== */
+.card h3 .fa-solid,
+.card h3 .fa-brands {
+  display: inline-block;
+  transition: transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.card:hover h3 .fa-solid,
+.card:hover h3 .fa-brands {
+  transform: scale(1.25) rotate(-8deg);
+}
+
+/* ===== Video placeholders breathe until real embeds land ===== */
+.video-placeholder .video-embed-container {
+  animation: placeholderBreathe 4s ease-in-out infinite;
+}
+
+.video-placeholder .fa-youtube {
+  animation: placeholderPulse 4s ease-in-out infinite;
+}
+
+@keyframes placeholderBreathe {
+  0%, 100% { border-color: rgba(255, 255, 255, 0.2); }
+  50% { border-color: rgba(41, 151, 255, 0.5); }
+}
+
+@keyframes placeholderPulse {
+  0%, 100% { color: rgba(255, 255, 255, 0.2); }
+  50% { color: rgba(41, 151, 255, 0.45); }
 }
