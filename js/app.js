@@ -168,12 +168,13 @@ let typingTimeout1, typingTimeout2; // Globals to clear timeouts if user navigat
 
 function initTypingEffect() {
   const words = [
-      { text: "Biostatistician." },
-      { text: "YouTuber."        },
-      { text: "AI Automator."    }
+      { text: "Biostatistician.", article: "a"  },
+      { text: "YouTuber.",        article: "a"  },
+      { text: "AI Automator.",    article: "an" }
   ];
 
   const element = document.getElementById("typing-word");
+  const articleEl = document.getElementById("typing-article");
   if (!element) return;
 
   let wordIndex = 0;
@@ -192,6 +193,7 @@ function initTypingEffect() {
       const current = words[wordIndex];
 
       if (!isDeleting) {
+          if (charIndex === 0 && articleEl) articleEl.textContent = current.article;
           if (charIndex <= current.text.length) {
               element.textContent = current.text.substring(0, charIndex);
               charIndex++;
