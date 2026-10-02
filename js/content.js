@@ -151,7 +151,7 @@ const views = {
       <h2>Curriculum Vitae</h2>
       <div class="card">
         <h3><i class="fa-solid fa-file-lines" style="margin-right: 8px;"></i> Resume / CV</h3>
-        <p>Available for download (Updated Apr 2026).</p>
+        <p>Available for download (Last updated October 2, 2026).</p>
         <a href="Kurt_Riggin_CV.pdf" download class="btn" style="margin-top: 1rem;"><i class="fa-solid fa-download"></i> Download CV</a>
       </div>
     </section>
